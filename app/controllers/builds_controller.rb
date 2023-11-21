@@ -3,6 +3,7 @@ class BuildsController < ApplicationController
 
   def index
     @builds = Build.all
+    @build = Build.new
   end
 
   def show

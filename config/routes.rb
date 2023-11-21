@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   get "/my_builds/:id/bookings", to: "bookings#list"
   # Defines the root path route ("/")
-  root "pages#home"
+  root "builds#index"
 
   resources :builds, only:[:index, :show, :new, :create, :edit, :update, :destroy]do
     resources :bookings, only: [:new, :create]
