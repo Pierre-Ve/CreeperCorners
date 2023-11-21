@@ -3,6 +3,7 @@ class BuildsController < ApplicationController
 
   def index
     @builds = Build.all
+    @build = Build.new
   end
 
   def show
@@ -45,13 +46,5 @@ class BuildsController < ApplicationController
 
   def build_params
     params.require(:build).permit(:address, :surface, :description, :category, :price)
-  end
-
-  def filtre
-    @filter_params = {
-      :category => "",
-      :price_mini => 1,
-      :price_maxi => 1000,
-      :surface_mini => 50}
   end
 end

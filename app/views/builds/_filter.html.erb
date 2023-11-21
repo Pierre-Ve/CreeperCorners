@@ -1,7 +1,6 @@
-<%= simple_form_for @filter_params do |f| %>
+<%= simple_form_for @build do |f| %>
   <%= f.input :category, collection: [ "apartment", "castle", "house"] %>
-  <%= f.input :price_mini %>
-  <%= f.input :price_maxi %>
-  <%= f.input :surface_mini %>
+  <%= f.input :price %>
+  <%= f.input :surface %>
   <%= f.button :submit %>
 <% end %>
