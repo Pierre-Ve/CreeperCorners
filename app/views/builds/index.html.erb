@@ -1,2 +1,20 @@
-<h1>Builds#index</h1>
-<p>Find me in app/views/builds/index.html.erb</p>
+<div class="container">
+  <h1>Discover the best Minecraft Builds</h1>
+  <p>Find me in app/views/builds/index.html.erb</p>
+  <div class="d-flex flex-wrap">
+    <% @builds.each do |build| %>
+      <div class="card m-2" style="width: 16rem;">
+        <img class="card-img-top" src="https://minecraft.fr/wp-content/uploads/2023/04/les-20-etapes-cles-pour-reussir-dans-un-nouveau-monde-minecraft-le-guide-ultime.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text"><%= build.description %></p>
+          <p class="card-text"><%= build.price %></p>
+          <p class="card-text"><%= build.surface %></p>
+          <p class="card-text"><%= build.address %></p>
+          <p class="card-text"><%= build.category %></p>
+          <a href="#" class="btn btn-primary">Rent this build</a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -10,10 +10,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "builds#index"
 
-  resources :builds, only:[:index, :new, :create, :edit, :update, :destroy] do
-    collection do
-      get 'filter'
-    end
+  resources :builds, only:[:index, :show, :new, :create, :edit, :update, :destroy]do
     resources :bookings, only: [:new, :create]
   end
   resources :bookings, only:[ :destroy, :index]
