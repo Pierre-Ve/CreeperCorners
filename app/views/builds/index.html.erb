@@ -12,7 +12,7 @@
           <p class="card-text"><%= build.surface %></p>
           <p class="card-text"><%= build.address %></p>
           <p class="card-text"><%= build.category %></p>
-          <a href="#" class="btn btn-primary">Rent this build</a>
+          <%= link_to "Rent this build", new_build_booking_path(build),class: "btn btn-primary" %>
         </div>
       </div>
     <% end %>
