@@ -11,12 +11,17 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
   end
 
   def index
+    @bookings = Booking.where(user_id: current_user.id)
   end
 
   def list
+    @build = Build.find(params[:build_id])
+    @booking.find_by(build_id: @build)
   end
 
   private
