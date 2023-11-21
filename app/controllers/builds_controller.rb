@@ -1,5 +1,6 @@
 class BuildsController < ApplicationController
   def index
+    
   end
 
   def new
@@ -15,5 +16,13 @@ class BuildsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def filtre
+    @filter_params = {
+      :category => "",
+      :price_mini => 1,
+      :price_maxi => 1000,
+      :surface_mini => 50}
   end
 end
