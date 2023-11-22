@@ -5,9 +5,10 @@
       <div id="right-side-navbar">
         <div id="navbar-create-build" >
           <i class="fa-solid fa-plus"></i>
-          <a href="#"  id="button-navbar">Create your build</a>
+          <%= link_to "Add your build", new_build_path(),id: "button-navbar" %>
         </div>
-       <a href="#" id="login">Login</a>
+       <%= link_to "login", new_user_session_path(), class:"btn btn-primary log" %>
+       <%= button_to "logout", destroy_user_session_path, method: :delete, class:"btn btn-primary log" %>
       </div>
     </div>
   </div>
