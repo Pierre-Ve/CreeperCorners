@@ -1,5 +1,6 @@
 class BuildsController < ApplicationController
   before_action :set_build, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user!, only: :index
 
   def index
     @builds = Build.all
