@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-between px-3">
+  <div>
+    <h2>My profile</h2>
+    <div class="card m-2" style="width: 16rem;">  
+      <p class="fw-bold"><%= current_user.first_name %> <%= current_user.last_name %></p>
+      <p>Member since <%= current_user.created_at.to_date  %></p>
+    </div>
+  </div>
+  <div>
+    <h2>My bookings</h2>
+    <div class="d-flex flex-wrap justify-content-start">
+      <% @my_bookings.each do |booking| %>
+        <div class="card m-2" style="width: 16rem;">
+          <img class="card-img-top" src="https://minecraft.fr/wp-content/uploads/2023/04/les-20-etapes-cles-pour-reussir-dans-un-nouveau-monde-minecraft-le-guide-ultime.jpg" alt="Card image cap">
+          <p><%= booking.start_date %></p>
+          <p><%= booking.build.description %></p>
+          <p><%= booking.build.price %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= console %>
