@@ -3,7 +3,24 @@ class BuildsController < ApplicationController
 
   def index
     @builds = Build.all
-    @build = Build.new
+
+    if params[:filter].present?
+      if params[:filter][:category] != ""
+        @builds = @builds.where('category LIKE ? ', params[:filter][:category])
+      end
+      if params[:filter][:surface_min].to_i != 0
+        @builds = @builds.where('surface >= ? ', params[:filter][:surface_min].to_i)
+      end
+      if params[:filter][:surface_max].to_i != 0
+        @builds = @builds.where('surface <= ? ', params[:filter][:surface_max].to_i)
+      end
+      if params[:filter][:price_min].to_i != 0
+        @builds = @builds.where('price >= ? ', params[:filter][:price_min].to_i)
+      end
+      if params[:filter][:price_max].to_i != 0
+        @builds = @builds.where('price <= ? ', params[:filter][:price_max].to_i)
+      end
+    end
   end
 
   def show
