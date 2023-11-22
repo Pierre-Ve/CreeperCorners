@@ -1,7 +1,12 @@
 <div class="container">
   <h1>Discover the best Minecraft Builds</h1>
   <p>Find me in app/views/builds/index.html.erb</p>
-  <div class="d-flex flex-wrap">
+  <div class=" pb-5">
+      <%= render 'filter', build: @build %>
+  </div>
+</div>
+
+  <div class="d-flex flex-wrap container">
     <% @builds.each do |build| %>
       <div class="card m-2" style="width: 16rem;">
         <img class="card-img-top" src="https://minecraft.fr/wp-content/uploads/2023/04/les-20-etapes-cles-pour-reussir-dans-un-nouveau-monde-minecraft-le-guide-ultime.jpg" alt="Card image cap">
@@ -16,16 +21,5 @@
         </div>
       </div>
     <% end %>
-  </div>
-</div>
-
-
-
-<div class="container pb-5">
-  <h1 class="text-center">Filters</h1>
-  <div class="d-flex justify-content-center">
-    <div>
-      <%= render 'filter', build: @build %>
-    </div>
   </div>
 </div>
