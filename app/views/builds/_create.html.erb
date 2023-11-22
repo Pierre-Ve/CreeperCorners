@@ -1,0 +1,10 @@
+
+<%= simple_form_for(build) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :category, collection: ["apartment", "house", "castle"]%>
+  <%= f.input :price %>
+  <%= f.input :surface %>
+  <%= f.input :address %>
+  <%= f.input :description %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>
