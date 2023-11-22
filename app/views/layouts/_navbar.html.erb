@@ -7,8 +7,11 @@
           <i class="fa-solid fa-plus"></i>
           <%= link_to "Add your build", new_build_path(),id: "button-navbar" %>
         </div>
-       <%= link_to "login", new_user_session_path(), class:"btn btn-primary log" %>
-       <%= button_to "logout", destroy_user_session_path, method: :delete, class:"btn btn-primary log" %>
+        <% if current_user %>
+          <%= button_to "logout", destroy_user_session_path, method: :delete, class:"btn btn-primary log" %>
+        <% else %>
+          <%= link_to "login", new_user_session_path(), class:"btn btn-primary log" %>
+        <% end %>
       </div>
     </div>
   </div>
