@@ -3,32 +3,20 @@
 <h2>Titre de la carte</h2>
 
   <!-- image grid section  -->
-  <div class="mb-4">
-    <%= image_tag '1 - FVKrQl2.png', alt: 'icon', style: 'height:100%;width:500px'%>
-  </div>
 
 
   <div class="d-flex justify-content-between ">
+    <div class="mb-4">
+      <%= image_tag '1 - FVKrQl2.png', alt: 'icon', style: 'height:100%;width:100%'%>
+    </div>
 <!-- left section  -->
 
-<!-- host section  -->
-    <div>
-      <div class="d-flex align-items">
-        <img src="https://images.unsplash.com/photo-1559969143-b2defc6419fd?q=80&w=3930&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="hallo" class="rounded-circle mb-3" style="width: 65px">
-        <p>Your host: User first name and last name</p>
-      </div>
-      <hr style="height: 3px;"/>
-  <!-- Build description  -->
-      <div>
-        <p><%=@build.description %></p>
-
-      </div>
-    </div>
 
 
 <!-- right section  -->
-    <div class ="border border-dark p-3 w-25 sticky-top">
-      <p><%= @build.price %> euros per night </p>
+    <div class ="border border-dark p-3 w-25 sticky-top w-50">
+      <h5><%= @build.price %> <i class="fa-solid fa-gem m-1"></i>/night </h5>
+      <%= render 'bookings/form', booking: @booking, build: @build %>
       <div class="mt-2">
         <p>Start date</p>
         <p>Input date début</p>
@@ -47,6 +35,19 @@
         <p>TOTAL</p>
         <p>price in currency minecraft</p>
       </div>
+    </div>
+  </div>
+<!-- host section  -->
+  <div>
+    <div class="d-flex align-items">
+      <img src="https://images.unsplash.com/photo-1559969143-b2defc6419fd?q=80&w=3930&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="hallo" class="rounded-circle mb-3" style="width: 65px">
+      <p>Your host: User first name and last name</p>
+    </div>
+    <hr style="height: 3px;"/>
+<!-- Build description  -->
+    <div>
+      <p><%=@build.description %></p>
+
     </div>
   </div>
 </div>
