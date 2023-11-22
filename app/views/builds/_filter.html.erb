@@ -1,8 +1,10 @@
 <%= simple_form_for :filter, url: "/builds", method: :get do |form| %>
-  <%= form.input :category, collection: ["apartment", "house", "castle"] %>
-  <%= form.input :surface_min %>
-  <%= form.input :surface_max %>
-  <%= form.input :price_min %>
-  <%= form.input :price_max %>
-  <%= form.submit "Filter" %>
+  <div class="d-flex justify-content-between align-items-center">
+    <%= form.input :category, collection: ["apartment", "house", "castle"] %>
+    <%= form.input :surface_min %>
+    <%= form.input :surface_max %>
+    <%= form.input :price_min %>
+    <%= form.input :price_max %>
+    <%= form.submit "Filter", class:"h-25 btn btn-primary" %>
+  </div>
 <% end %>
