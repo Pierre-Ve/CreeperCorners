@@ -34,6 +34,7 @@ class BuildsController < ApplicationController
 
   def create
     @build = Build.new(build_params)
+    @build.user = current_user
     if @build.save
       redirect_to builds_path
     else
