@@ -1,17 +1,19 @@
-<nav class="navbar">
+<nav class="bg-white pt-2 pb-2">
   <div class="container">
-    <div class="navbar-lewagon">
-    <img src="" alt="" id ="logo">
-      <div id="right-side-navbar">
-        <div id="navbar-create-build" >
-          <i class="fa-solid fa-plus"></i>
-          <%= link_to "Add your build", new_build_path(),id: "button-navbar" %>
+    <div class="d-flex justify-content-between p-3 align-items-center" >
+      <%= link_to image_tag('logo.png'), '/builds/index', class:"align-items" %>
+      <div class="d-flex">
+        <div class="align-items-center text-center position-relative border border-primary">
+          <i class="fa-solid fa-plus text-primary ps-2"></i>
+          <%= link_to "Add your build", new_build_path(), class:"btn stretched-link text-primary"%>
         </div>
-        <% if current_user %>
-          <%= button_to "logout", destroy_user_session_path, method: :delete, class:"btn btn-primary log" %>
-        <% else %>
-          <%= link_to "login", new_user_session_path(), class:"btn btn-primary log" %>
-        <% end %>
+        <div >
+          <% if current_user %>
+            <%= button_to "logout", destroy_user_session_path, method: :delete, class:"btn btn-primary ms-2" %>
+          <% else %>
+            <%= link_to "login", new_user_session_path(), class:"btn btn-primary ms-2" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
