@@ -1,0 +1,5 @@
+
+<%= simple_form_for booking, url: build_bookings_path(build) do |f| %>
+  <%= f.input :start_date, as: :date%>
+  <%= f.button :submit, class:"btn btn-primary" %>
+<% end %>
