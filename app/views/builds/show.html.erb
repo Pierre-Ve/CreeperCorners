@@ -17,24 +17,7 @@
     <div class ="border border-dark p-3 w-25 sticky-top w-50">
       <h5><%= @build.price %> <i class="fa-solid fa-gem m-1"></i>/night </h5>
       <%= render 'bookings/form', booking: @booking, build: @build %>
-      <div class="mt-2">
-        <p>Start date</p>
-        <p>Input date début</p>
-      </div>
-      <div class="mt-2">
-        <p>Number of days</p>
-        <p>Input number of days</p>
-      </div>
-      <%= link_to "Book this build", new_build_path(),class: "btn btn-primary text-align-center" %>
-      <div class="d-flex justify-content-between">
-        <p><%= @build.price %> x nombre de nuit input </p>
-        <p>price in currency minecraft</p>
-      </div>
-      <hr style="height: 3px;"/>
-      <div class="d-flex justify-content-between">
-        <p>TOTAL</p>
-        <p>price in currency minecraft</p>
-      </div>
+      
     </div>
   </div>
 <!-- host section  -->

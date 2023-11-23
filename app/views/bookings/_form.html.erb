@@ -1,5 +1,14 @@
 
 <%= simple_form_for booking, url: build_bookings_path(build) do |f| %>
   <%= f.input :start_date, as: :date%>
+<div class="d-flex justify-content-between">
+  <p><%= @build.price %> x nombre de nuit input </p>
+  <p>price in currency minecraft</p>
+</div>
+<hr style="height: 3px;"/>
+<div class="d-flex justify-content-between">
+  <p>TOTAL :</p>
+  <p>price in currency minecraft</p>
+</div>
   <%= f.button :submit, class:"btn btn-primary" %>
 <% end %>
