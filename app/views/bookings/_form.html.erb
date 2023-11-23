@@ -1,18 +1,19 @@
 
-<div id="booking-form-div">
+<div id="booking-form-div" data-controller="bookings">
   <%= simple_form_for booking, url: build_bookings_path(build) do |f| %>
     <%= f.input :start_date,
               as: :string,
               input_html: { data: { controller: "datepicker",
-                            datepicker_booking_dates_value: dates.to_json } } %>
+                            datepicker_booking_dates_value: dates.to_json,
+                            action: "change->bookings#getDates" } } %>
   <div class="d-flex justify-content-between">
-    <p><%= build.price %> x nombre de nuit input </p>
-    <p>price in currency minecraft</p>
+    <p price="<%= build.price %>"data-bookings-target="priceTag"><%= build.price %> x <span data-bookings-target="days">1</span> nuits </p>
+    <i class="fa-solid fa-gem m-1"></i>
   </div>
   <hr style="height: 3px;"/>
   <div class="d-flex justify-content-between">
-    <p>TOTAL :</p>
-    <p>price in currency minecraft</p>
+    <p>TOTAL : <span data-bookings-target="prixTotal"></span></p>
+    <i class="fa-solid fa-gem m-1"></i>
   </div>
     <%= f.button :submit, class:"btn btn-primary" %>
   <% end %>
