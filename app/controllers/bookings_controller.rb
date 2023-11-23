@@ -2,12 +2,20 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     @build = Build.find(params[:build_id])
+    @booking_dates = Booking.where(build: @build).map do |booking|
+      {
+        from: booking.start_date,
+        to: booking.end_date
+      }
+    end
   end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.build = Build.find(params[:build_id])
     @booking.user = current_user
+    @booking.start_date = params[:booking][:start_date].split(' to ')[0]
+    @booking.end_date = params[:booking][:start_date].split(' to ')[1]
     @booking.save
   end
 

@@ -16,8 +16,8 @@
 <!-- right section  -->
     <div class ="border border-dark p-3 w-25 sticky-top w-50">
       <h5><%= @build.price %> <i class="fa-solid fa-gem m-1"></i>/night </h5>
-      <%= render 'bookings/form', booking: @booking, build: @build %>
-      
+      <%= render 'bookings/form', booking: @booking, build: @build, dates: @booking_dates %>
+
     </div>
   </div>
 <!-- host section  -->
