@@ -65,6 +65,6 @@ class BuildsController < ApplicationController
   end
 
   def build_params
-    params.require(:build).permit(:address, :surface, :description, :category, :price, :title, :photo)
+    params.require(:build).permit(:address, :surface, :description, :category, :price, :title, photos: [])
   end
 end
