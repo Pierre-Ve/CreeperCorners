@@ -1,7 +1,7 @@
 
 <div class="card m-2 position-static" style="width: 16rem;">
   <div class="position-relative">
-    <img class="card-img-top" src="https://minecraft.fr/wp-content/uploads/2023/04/les-20-etapes-cles-pour-reussir-dans-un-nouveau-monde-minecraft-le-guide-ultime.jpg" alt="Card image cap">
+    <%= cl_image_tag build.photo.key, height: 180, width: 250, crop: :fill %>
     <div class="card-body">
       <h5 class="card-title"><%= link_to build.title, build_path(build),class: "text-decoration-none text-dark stretched-link" %></h5>
       <p class="card-text"><%= build.category %></p>

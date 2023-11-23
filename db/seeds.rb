@@ -217,7 +217,6 @@ index = 0
 User.destroy_all
 Build.destroy_all
 Booking.destroy_all
-
 puts " !!! START creating 10 users in users' database...!!! "
 5.times do
   user = User.new(
@@ -238,6 +237,8 @@ puts " !!! START creating 10 users in users' database...!!! "
       category: builds_list[index][:category],
       price: builds_list[index][:price]
     )
+    file = URI.open("https://minecraft.fr/wp-content/uploads/2023/04/les-20-etapes-cles-pour-reussir-dans-un-nouveau-monde-minecraft-le-guide-ultime.jpg")
+    build.photo.attach(io: file, filename: "test.png", content_type: "image/jpg")
     build.save!
     index += 1
   end
