@@ -26,6 +26,12 @@ class BuildsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @booking_dates = Booking.where(build: @build).map do |booking|
+      {
+        from: booking.start_date,
+        to: booking.end_date
+      }
+    end
   end
 
   def new
