@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   def new
     @booking = Booking.new
-    @build = params[:build_id]
+    @build = Build.find(params[:build_id])
   end
 
   def create
