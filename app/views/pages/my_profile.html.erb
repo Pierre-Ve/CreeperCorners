@@ -13,7 +13,7 @@
       </div>
   </div>
   <div class="container ms-5">
-    <% if current_user.bookings.present? %>
+    <% if @my_bookings.present? %>
       <h2>My bookings</h2>
       <div class="d-flex flex-wrap justify-content-start">
         <% @my_bookings.each do |booking| %>
@@ -29,6 +29,20 @@
     <% end %>
   </div>
 </div>
+
+<div>
+  <div class="container-fluid mt-5">
+   <h2>My builds rented</h2>
+      <div class="d-flex flex-wrap justify-content-start">
+        <% @my_builds_rented.each do |build_rented| %>
+          <div>
+            <%= render "builds/build", build: build_rented, lien: edit_build_path(build_rented), name: "Edit" %>
+          </div>
+        <% end %>
+      </div>
+  </div>
+</div>
+
 <div>
   <% if current_user.builds.present? %>
   <div class="container-fluid mt-5">
@@ -43,3 +57,5 @@
   </div>
   <% end %>
 </div>
+
+<% console %>
