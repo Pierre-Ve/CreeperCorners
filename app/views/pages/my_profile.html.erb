@@ -1,24 +1,42 @@
-<div class="d-flex justify-content-between px-3">
+<div class="d-flex justify-content-start px-3">
   <div>
-    <h2>My profile</h2>
-    <div class="card m-2" style="width: 16rem;">  
-      <p class="fw-bold"><%= current_user.first_name %> <%= current_user.last_name %></p>
-      <p>Member since <%= current_user.created_at.to_date  %></p>
-    </div>
-  </div>
-  <div>
-    <h2>My bookings</h2>
-    <div class="d-flex flex-wrap justify-content-start">
-      <% @my_bookings.each do |booking| %>
-        <div class="card m-2" style="width: 16rem;">
-          <img class="card-img-top" src="https://minecraft.fr/wp-content/uploads/2023/04/les-20-etapes-cles-pour-reussir-dans-un-nouveau-monde-minecraft-le-guide-ultime.jpg" alt="Card image cap">
-          <p><%= booking.start_date %></p>
-          <p><%= booking.build.description %></p>
-          <p><%= booking.build.price %></p>
+    <h2 class="mb-3">My profile</h2>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center pb-3">
+            <%= image_tag("avatar.jpg", alt: "Avatar", size: "86x86", class: "img-fluid rounded-circle") %>
+            <p class="fw-bold"><%= current_user.first_name %> <%= current_user.last_name %></p>
+          </div>
+          <p>Member since <%= current_user.created_at.to_date  %></p>
+          <%= link_to "Edit", edit_user_registration_path(current_user),class: "btn btn-primary" %>
         </div>
-      <% end %>
-    </div>
+      </div>
+  </div>
+  <div class="container ms-5">
+    <% if current_user.bookings.present? %>
+      <h2>My bookings</h2>
+      <div class="d-flex flex-wrap justify-content-start">
+        <% @my_bookings.each do |booking| %>
+          <div class="card m-2" style="width: 16rem;">
+            <img class="card-img-top" src="https://minecraft.fr/wp-content/uploads/2023/04/les-20-etapes-cles-pour-reussir-dans-un-nouveau-monde-minecraft-le-guide-ultime.jpg" alt="Card image cap">
+            <%= render booking %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
-
-<%= console %>
+<div>
+  <% if current_user.builds.present? %>
+  <div class="container-fluid mt-5">
+    <h2>My builds</h2>
+      <div class="d-flex flex-wrap justify-content-start">
+        <% @my_builds.each do |build_rent| %>
+          <div>
+            <%= render "pages/build_rent", build: build_rent, lien: edit_build_path(build_rent), name: "Edit" %>
+          </div>
+        <% end %>
+      </div>
+  </div>
+  <% end %>
+</div>
