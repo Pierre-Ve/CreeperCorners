@@ -214,9 +214,9 @@ builds_list = [
   }
 ]
 index = 0
-User.destroy_all
-Build.destroy_all
 Booking.destroy_all
+Build.destroy_all
+User.destroy_all
 puts " !!! START creating 10 users in users' database...!!! "
 5.times do
   user = User.new(
@@ -238,7 +238,7 @@ puts " !!! START creating 10 users in users' database...!!! "
       price: builds_list[index][:price]
     )
     file = URI.open("https://minecraft.fr/wp-content/uploads/2023/04/les-20-etapes-cles-pour-reussir-dans-un-nouveau-monde-minecraft-le-guide-ultime.jpg")
-    build.photo.attach(io: file, filename: "test.png", content_type: "image/jpg")
+    build.photos.attach(io: file, filename: "test.png", content_type: "image/jpg")
     build.save!
     index += 1
   end
@@ -249,10 +249,12 @@ puts "!!! FINISH users creation !!!"
 
 puts " !!! START creating 10 past bookings...!!! "
 10.times do
+  date = Faker::Date.between(from: '2010-01-01', to: '2022-12-31')
   booking = Booking.new(
     user_id: (1..5).to_a.sample,
     build_id: (1..25).to_a.sample,
-    start_date: Faker::Date.between(from: '2010-01-01', to: '2022-12-31'),
+    start_date: date,
+    end_date: date + (1..4).to_a.sample,
     status: (0..2).to_a.sample
   )
   booking.save!

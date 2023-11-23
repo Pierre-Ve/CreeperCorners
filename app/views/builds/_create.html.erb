@@ -1,11 +1,11 @@
 
 <%= simple_form_for(build) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :category, collection: ["apartment", "house", "castle"]%>
-  <%= f.input :price %>
-  <%= f.input :surface %>
-  <%= f.input :address %>
-  <%= f.input :description %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit class: "btn btn-primary" %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true }%>
+  <%= f.input :title, placeholder: "Minis Tirith, a 2 years project"%>
+  <%= f.input :category, collection: ["apartment", "house", "castle"], selected: ""%>
+  <%= f.input :price, placeholder: "25 / per days"%>
+  <%= f.input :surface, placeholder: "450 / box squared meters"%>
+  <%= f.input :address, placeholder: "Servers n°101.145.155"%>
+  <%= f.input :description, placeholder: "Tell us every little details about your awesome creation"%>
+  <%= f.submit class:"btn btn-primary w-100"%>
 <% end %>

@@ -26,6 +26,12 @@ class BuildsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @booking_dates = Booking.where(build: @build).map do |booking|
+      {
+        from: booking.start_date,
+        to: booking.end_date
+      }
+    end
   end
 
   def new
@@ -69,6 +75,6 @@ class BuildsController < ApplicationController
   end
 
   def build_params
-    params.require(:build).permit(:address, :surface, :description, :category, :price, :title, :photo)
+    params.require(:build).permit(:address, :surface, :description, :category, :price, :title, photos: [])
   end
 end
