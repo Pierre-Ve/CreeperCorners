@@ -46,10 +46,14 @@ class BuildsController < ApplicationController
   end
 
   def update
-    if @build.update(build_params)
-      redirect_to build_path(@build)
+    if @build.user == current_user
+      if @build.update(build_params)
+        redirect_to my_profile_path, notice: "Build successfully updated !"
+      else
+        render :new, status: :unprocessable_entity
+      end
     else
-      render :new, status: :unprocessable_entity
+      redirect_to my_profile_path, alert: 'You are not authorized to update build.'
     end
   end
 
