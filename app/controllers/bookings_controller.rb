@@ -11,11 +11,6 @@ class BookingsController < ApplicationController
     @booking.save
   end
 
-  def destroy
-    @booking = Booking.find(params[:id])
-    @booking.destroy
-  end
-
   def index
     @bookings = Booking.where(user_id: current_user.id)
   end
@@ -23,6 +18,19 @@ class BookingsController < ApplicationController
   def list
     @build = Build.find(params[:build_id])
     @booking.find_by(build_id: @build)
+  end
+
+  def edit
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    if @booking.user == current_user
+      @booking.update(status: 'cancelled')
+      redirect_to my_profile_path, notice: 'Booking was successfully cancelled.'
+    else
+      redirect_to my_profile_path, alert: 'You are not authorized to cancel this booking.'
+    end
   end
 
   private

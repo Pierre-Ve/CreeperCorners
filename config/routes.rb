@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   resources :builds, only:[:index, :show, :new, :create, :edit, :update, :destroy]do
     resources :bookings, only: [:new, :create]
   end
-  resources :bookings, only:[ :destroy, :index]
+  resources :bookings, only:[:edit, :update, :index]
   get "my_profile", to: "pages#my_profile"
 end

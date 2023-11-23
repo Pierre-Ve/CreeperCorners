@@ -20,6 +20,9 @@
           <div class="card m-2" style="width: 16rem;">
             <img class="card-img-top" src="https://minecraft.fr/wp-content/uploads/2023/04/les-20-etapes-cles-pour-reussir-dans-un-nouveau-monde-minecraft-le-guide-ultime.jpg" alt="Card image cap">
             <%= render booking %>
+            <div class="p-2">
+              <%= link_to 'Cancel', booking_path(booking), data: { turbo_method: :patch }, class: "btn btn-primary w-100" %>
+            </div>
           </div>
         <% end %>
       </div>
@@ -33,7 +36,7 @@
       <div class="d-flex flex-wrap justify-content-start">
         <% @my_builds.each do |build_rent| %>
           <div>
-            <%= render "pages/build_rent", build: build_rent, lien: edit_build_path(build_rent), name: "Edit" %>
+            <%= render "builds/build", build: build_rent, lien: edit_build_path(build_rent), name: "Edit" %>
           </div>
         <% end %>
       </div>
