@@ -1,9 +1,10 @@
 
 <div class="container">
-
-      <% @build.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, width: 650, crop: :fill %>
-      <% end %>
+  <div class="image-grid">
+    <% @build.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, width: 650, crop: :fill %>
+        <% end %>
+  </div>
 
   <div class="mt-5 d-flex justify-content-between">
 <!-- left section  -->
@@ -31,9 +32,19 @@
     </div>
 
 <!-- right section  -->
-    <div class ="border border-dark p-3 w-25 sticky-top w-50">
+    <div class ="brutal-border-black brutal-box-black p-3 w-25 sticky-top w-50">
       <h5><%= @build.price %> <i class="fa-solid fa-gem m-1"></i>/night </h5>
       <%= render 'bookings/form', booking: @booking, build: @build, dates: @booking_dates %>
     </div>
   </div>
 </div>
+<script>
+  $('.image-grid').slick({
+    slidesToShow: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    fade: true,
+    prevArrow:"<span class='prev-btn'><i class='bx bx-chevron-left'></i></span>",
+    nextArrow:"<span class='next-btn'><i class='bx bx-chevron-right' ></i></span>"
+  });
+</script>
