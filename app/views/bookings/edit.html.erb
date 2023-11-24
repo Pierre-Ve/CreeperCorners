@@ -1,0 +1,20 @@
+<h1>Update your booking's request</h1>
+
+<div class="container">
+  <div class="card m-2 p-2">
+    <p><%= @booking.build.title %></p>
+    <p>from <%= @booking.start_date %> to <%= @booking.end_date %></p>
+  </div>
+  <div class="card m-2 p-2">
+  <%= simple_form_for(@booking) do |f| %>
+    <%= f.input :status, collection: ["confirmed", "declined"]  %>
+    <%= f.submit class: 'btn-submit-movie mt-3' %>
+  <% end %>
+
+  </div>
+</div>
+
+
+
+
+<!-- <%= render "booking", booking: @booking %> -->

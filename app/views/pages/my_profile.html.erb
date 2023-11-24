@@ -20,6 +20,18 @@
           <div class="card m-2" style="width: 16rem;">
             <img class="card-img-top" src="https://minecraft.fr/wp-content/uploads/2023/04/les-20-etapes-cles-pour-reussir-dans-un-nouveau-monde-minecraft-le-guide-ultime.jpg" alt="Card image cap">
             <%= render booking %>
+            <!-- -->
+            <% css_class = case booking.status
+              when "confirmed"
+                "text-success"
+              when "pending"
+                "text-warning"
+              else
+                "text-danger"
+              end
+            %>
+            <!-- -->
+            <p class="fw-bold ps-2 <%= css_class %>"><%= booking.status.capitalize %></p>
             <div class="p-2">
               <%= link_to 'Cancel', booking_path(booking), data: { turbo_method: :patch }, class: "btn btn-primary w-100" %>
             </div>
@@ -31,16 +43,33 @@
 </div>
 
 <div>
-  <div class="container-fluid mt-5">
-   <h2>My builds rented</h2>
-      <div class="d-flex flex-wrap justify-content-start">
-        <% @my_builds_rented.each do |build_rented| %>
-          <div>
-            <%= render "builds/build", build: build_rented, lien: edit_build_path(build_rented), name: "Edit" %>
-          </div>
-        <% end %>
-      </div>
-  </div>
+  <% if @my_builds_booked.present? %>
+    <div class="container-fluid mt-5">
+    <h2>My builds booked</h2>
+        <div class="d-flex justify-content-start">
+          <% @my_builds_booked.each do |build_booked| %>
+          <!-- -->
+          <% css_class = case build_booked.status
+            when "confirmed"
+              "text-success"
+            when "pending"
+              "text-warning"
+            else
+              "text-danger"
+            end
+          %>
+          <!-- -->
+            <div class="card m-2">
+              <%= render "bookings/booking", booking: build_booked %>
+              <div class="d-flex justify-content-between align-items-center p-2">
+                <p class="fw-bold ps-2 <%= css_class %>"><%= build_booked.status.capitalize %></p>
+                <%= link_to "Update", edit_booking_path(build_booked),class: "btn btn-primary" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  <% end %>
 </div>
 
 <div>
@@ -57,5 +86,3 @@
   </div>
   <% end %>
 </div>
-
-<% console %>

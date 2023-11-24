@@ -29,6 +29,7 @@ class BookingsController < ApplicationController
   end
 
   def edit
+    @booking = Booking.find(params[:id])
   end
 
   def update
@@ -37,7 +38,8 @@ class BookingsController < ApplicationController
       @booking.update(status: 'cancelled')
       redirect_to my_profile_path, notice: 'Booking was successfully cancelled.'
     else
-      redirect_to my_profile_path, alert: 'You are not authorized to cancel this booking.'
+      @booking.update(status: params[:booking][:status])
+      redirect_to my_profile_path
     end
   end
 
