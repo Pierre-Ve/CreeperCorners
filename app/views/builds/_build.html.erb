@@ -2,7 +2,7 @@
   <div class="card m-2" style="width: 16rem; height: 300px;">
     <div class="position-relative">
       <% if !build.photos.first.nil?%>
-        <%= cl_image_tag build.photos.first.key, class: "w-100", crop: :fill %>
+          <%= cl_image_tag build.photos.first.key, class: "w-100",style: "height: 150px", crop: :fill %>
       <% else %>
         <img src="https://fakeimg.pl/600x400?text=No+images+" alt="hallo" class="w-100">
       <% end %>
