@@ -5,9 +5,14 @@
   <%= image_tag 'login.png', alt: 'icon' %>
 
   <!-- right section  -->
-    <div class="mr-2 p-3 bg-white w-50">
-      <h2>Welcome!</h2>
-      <p>Please enter your credentials<p>
+    <div class="ms-2 p-3 bg-white w-50 brutal-box brutal-border">
+      <div class="d-flex align-items-center justify-content-between">
+        <div>
+          <h2>Welcome!</h2>
+          <p>Please enter your credentials<p>
+        </div>
+        <%= image_tag 'image_show.png', alt: 'icon', :style => "width: 50px" %>
+      </div>
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-inputs">
           <%= f.input :email,
@@ -21,13 +26,13 @@
         </div>
          <%= link_to "Forgot your password?", new_password_path(resource_name) %>
         <div class="form-actions">
-          <%= f.button :submit, "Log in", class:"btn btn-primary btn-lg mt-2" %>
+          <%= f.button :submit, "Log in", class:"brutal-btn brutal-box w-100 mt-3 mb-3" %>
         </div>
       <% end %>
-        <hr style="height: 3px;" class="m-1"/>
+        <hr style="height: 3px;" class="mt-3 mb-3 "/>
       <div>
         <p>No account yet?</p>
-        <%= link_to "Sign up", new_registration_path(resource_name), class:"btn btn-outline-primary"%>
+        <%= link_to "Sign up", new_registration_path(resource_name), class:"btn btn-outline-primary w-100"%>
       </div>
     </div>
   </div>
