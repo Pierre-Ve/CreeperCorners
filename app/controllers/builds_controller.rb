@@ -26,7 +26,9 @@ class BuildsController < ApplicationController
 
   def show
     @booking = Booking.new
-    @booking_dates = Booking.where(build: @build).map do |booking|
+    @build = Build.find(params[:id])
+    sql_query = "build_id = ? AND (status = 0 OR status = 1)"
+    @booking_dates = Booking.where(sql_query, @build.id).map do |booking|
       {
         from: booking.start_date,
         to: booking.end_date
