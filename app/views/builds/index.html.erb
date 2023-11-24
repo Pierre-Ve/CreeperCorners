@@ -7,7 +7,7 @@
 
   <div class="d-flex flex-wrap container">
     <% @builds.each do |build| %>
-      <%= render build, build: build, lien: new_build_booking_path(build), name: "Rent" %>
+      <%= render build, build: build, lien: build_path(build), name: "View details" %>
     <% end %>
   </div>
 </div>
