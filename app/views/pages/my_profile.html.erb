@@ -1,27 +1,57 @@
-<div class="d-flex justify-content-start px-3">
-  <div>
-    <h2 class="mb-3">My profile</h2>
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <div class="d-flex justify-content-between align-items-center pb-3">
-            <%= image_tag("avatar.jpg", alt: "Avatar", size: "86x86", class: "img-fluid rounded-circle") %>
-            <p class="fw-bold"><%= current_user.first_name %> <%= current_user.last_name %></p>
+<div class="container">
+  <div class="d-flex mt-4 px-3">
+    <div class="">
+      <h2 class="mb-3">My profile</h2>
+        <div class="card brutal-border-black brutal-box-black p-3 width">
+          <div class=" ">
+            <div class="d-flex align-items-center pb-3">
+              <img src="https://images.unsplash.com/photo-1559969143-b2defc6419fd?q=80&w=3930&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="hallo" class="rounded-circle mb-3" style="height:50px">
+              <div class="ms-3">
+                <p class="fw-bold"><%= current_user.first_name %> <%= current_user.last_name %></p>
+                <p class="small-t">Member since <%= current_user.created_at.to_date  %></p>
+              </div>
+            </div>
           </div>
-          <p>Member since <%= current_user.created_at.to_date  %></p>
-          <%= link_to "Edit", edit_user_registration_path(current_user),class: "btn btn-primary" %>
+            <%= link_to "Edit", edit_user_registration_path(current_user),class: "brutal-btn brutal-box w-100" %>
         </div>
+    </div>
+    <div class="ms-5">
+      <div class="haut">
+          <% if @my_bookings.present? %>
+            <h2>My bookings</h2>
+            <div class="d-flex flex-wrap justify-content-start">
+              <% @my_bookings.each do |booking| %>
+                <div class="card brutal-border-black brutal-box-black m-2" style="width: 16rem;">
+                  <%= cl_image_tag booking.build.photos.first.key, class: "w-100",style: "height: 150px", crop: :fill, class: "mx-auto d-block pt-1" %>
+                  <%= render booking %>
+                  <!-- -->
+                  <% css_class = case booking.status
+                    when "confirmed"
+                      "text-success"
+                    when "pending"
+                      "text-warning"
+                    else
+                      "text-danger"
+                    end
+                  %>
+                  <!-- -->
+                  <p class="fw-bold ps-2 <%= css_class %>"><%= booking.status.capitalize %></p>
+                  <div class="p-2">
+                    <%= link_to 'Cancel', booking_path(booking), data: { turbo_method: :patch }, class: "brutal-btn brutal-box w-100" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
       </div>
-  </div>
-  <div class="container ms-5">
-    <% if @my_bookings.present? %>
-      <h2>My bookings</h2>
-      <div class="d-flex flex-wrap justify-content-start">
-        <% @my_bookings.each do |booking| %>
-          <div class="card m-2" style="width: 16rem;">
-            <%= cl_image_tag booking.build.photos.first.key, height: 180, width: 250, crop: :fill, class: "mx-auto d-block pt-1" %>
-            <%= render booking %>
+      <div class="bas">
+    <% if @my_builds_booked.present? %>
+      <div class="container-fluid mt-5">
+      <h2>My builds booked</h2>
+          <div class="d-flex justify-content-start">
+            <% @my_builds_booked.each do |build_booked| %>
             <!-- -->
-            <% css_class = case booking.status
+            <% css_class = case build_booked.status
               when "confirmed"
                 "text-success"
               when "pending"
@@ -31,59 +61,37 @@
               end
             %>
             <!-- -->
-            <p class="fw-bold ps-2 <%= css_class %>"><%= booking.status.capitalize %></p>
-            <div class="p-2">
-              <%= link_to 'Cancel', booking_path(booking), data: { turbo_method: :patch }, class: "btn btn-primary w-100" %>
-            </div>
+              <div class="card m-2 ">
+                <%= cl_image_tag build_booked.build.photos.first.key, height: 180, width: 250, crop: :fill, class: "mx-auto d-block pt-1" %>
+                <%= render "bookings/booking", booking: build_booked %>
+                <div class="d-flex justify-content-between align-items-center  p-3">
+                  <p class="fw-bold ps-2 <%= css_class %>"><%= build_booked.status.capitalize %></p>
+                  <%= link_to "Update", edit_booking_path(build_booked),class: "btn btn-primary" %>
+                </div>
+              </div>
+            <% end %>
           </div>
-        <% end %>
       </div>
     <% end %>
   </div>
-</div>
 
-<div>
-  <% if @my_builds_booked.present? %>
+  <div>
+    <% if current_user.builds.present? %>
     <div class="container-fluid mt-5">
-    <h2>My builds booked</h2>
-        <div class="d-flex justify-content-start">
-          <% @my_builds_booked.each do |build_booked| %>
-          <!-- -->
-          <% css_class = case build_booked.status
-            when "confirmed"
-              "text-success"
-            when "pending"
-              "text-warning"
-            else
-              "text-danger"
-            end
-          %>
-          <!-- -->
-            <div class="card m-2">
-              <%= cl_image_tag build_booked.build.photos.first.key, height: 180, width: 250, crop: :fill, class: "mx-auto d-block pt-1" %>
-              <%= render "bookings/booking", booking: build_booked %>
-              <div class="d-flex justify-content-between align-items-center p-2">
-                <p class="fw-bold ps-2 <%= css_class %>"><%= build_booked.status.capitalize %></p>
-                <%= link_to "Update", edit_booking_path(build_booked),class: "btn btn-primary" %>
-              </div>
+      <h2>My builds</h2>
+        <div class="d-flex flex-wrap justify-content-start p-3">
+          <% @my_builds.each do |build_rent| %>
+            <div>
+              <%= render "builds/build", build: build_rent, lien: edit_build_path(build_rent), name: "Edit" %>
             </div>
           <% end %>
         </div>
     </div>
-  <% end %>
-</div>
-
-<div>
-  <% if current_user.builds.present? %>
-  <div class="container-fluid mt-5">
-    <h2>My builds</h2>
-      <div class="d-flex flex-wrap justify-content-start">
-        <% @my_builds.each do |build_rent| %>
-          <div>
-            <%= render "builds/build", build: build_rent, lien: edit_build_path(build_rent), name: "Edit" %>
-          </div>
-        <% end %>
+    <% end %>
       </div>
+    </div>
   </div>
-  <% end %>
+
+  <div>
+  </div>
 </div>
