@@ -7,6 +7,7 @@ export default class extends Controller {
   }
 
   getData(event){
+    // event.preventDefault();
     // if (this.submitTarget.value === "Filter") {
     //   this.submitTarget.classList.add("bg-success")
     //   this.submitTarget.value = "Reset"
