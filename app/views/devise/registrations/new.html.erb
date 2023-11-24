@@ -7,9 +7,14 @@
   <%= image_tag 'login.png', alt: 'icon' %>
 
   <!-- right section  -->
-    <div class="mr-2 p-3 bg-white w-50">
-      <h2>Welcome!</h2>
-      <p>Please enter your credentials<p>
+    <div class="ms-2 p-3 bg-white w-50 brutal-box brutal-border">
+      <div class="d-flex align-items-center justify-content-between">
+        <div>
+          <h2>Welcome!</h2>
+          <p>Please enter your credentials<p>
+        </div>
+        <%= image_tag 'image_show.png', alt: 'icon', :style => "width: 50px" %>
+      </div>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
 
@@ -36,7 +41,7 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Sign up",class: "btn btn-primary" %>
+          <%= f.button :submit, "Sign up",class: "brutal-btn brutal-box w-100" %>
         </div>
       <% end %>
     </div>
