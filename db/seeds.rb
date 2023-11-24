@@ -64,7 +64,7 @@ builds_list = [
     "surface": 174,
     "address": "54 Creeper Way, Redstonia",
     "description": "Quaint and delightful, ideal for those who love a touch of simplicity and nature.",
-    "url": "https://assets2.rockpapershotgun.com/minecraft-house-ideas-farmhouse-2.jpg/BROK/resize/690%3E/format/jpg/quality/80/minecraft-house-ideas-farmhouse-2.jpg"
+    "url": "https://www.serial-gamers.fr/wp-content/uploads/2023/08/cette-construction-minecraft-de-la-guerre-de-secession-a-necessite-un-an-de-travail-et-comporte-un-abraham-lincoln-joue-par-une-voix-img-0.jpg"
   },
   {
     "title": "Magical House in Skyland",
@@ -136,7 +136,7 @@ builds_list = [
     "surface": 415,
     "address": "53 Redstone Ave, Pixelton",
     "description": "Spectacular views from every room, crafted for a memorable experience.",
-    "url": "https://minecraft-inside.ru/uploads/files/2022-04/thumb/2022-04-16_10.27.47.png"
+    "url": "https://i.pinimg.com/originals/7a/a7/6d/7aa76da975e1c2e1bf739f1cbfdff29d.png"
   },
   {
     "title": "Modern Apartment in Fortress City",
@@ -263,7 +263,7 @@ puts " !!! START creating 10 users in users' database...!!! "
       price: builds_list[index][:price]
     )
     file = URI.open(builds_list[index][:url])
-c    build.photos.attach(io: file, filename: "test.png", content_type: "image/jpg")
+    build.photos.attach(io: file, filename: "test.png", content_type: "image/jpg")
     build.save!
     index += 1
   end
@@ -272,16 +272,32 @@ puts "!!! FINISH builds creation !!!"
 end
 puts "!!! FINISH users creation !!!"
 
-puts " !!! START creating 10 past bookings...!!! "
-10.times do
-  date = Faker::Date.between(from: '2010-01-01', to: '2022-12-31')
-  booking = Booking.new(
-    user_id: (1..5).to_a.sample,
-    build_id: (1..25).to_a.sample,
-    start_date: date,
-    end_date: date + (1..4).to_a.sample,
-    status: (0..2).to_a.sample
-  )
-  booking.save!
-end
-puts "!!! FINISH bookings creation !!!"
+# puts " !!! START creating 10 past bookings...!!! "
+# 5.times do
+#   date = Faker::Date.between(from: '2010-01-01', to: '2022-12-31')
+#   booking = Booking.new(
+#     user_id: User.all.sample[:id],
+#     build_id: Booking.all.sample[:id],
+#     start_date: date,
+#     end_date: date + (1..4).to_a.sample,
+#     status: (0..2).to_a.sample
+#   )
+#   booking.save!
+# end
+# puts "!!! FINISH bookings creation !!!"
+
+user1 = User.new(
+  first_name: "Pierre",
+  last_name: "Veillet",
+  email: "pierre@gmail.com",
+  password: "turentrespas"
+)
+user1.save!
+user1 = User.new(
+  first_name: "Rémi",
+  last_name: "Lavigne",
+  email: "remi@gmail.com",
+  password: "toujourspas"
+)
+user1.save!
+puts "user generated"
