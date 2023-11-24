@@ -16,7 +16,11 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.start_date = params[:booking][:start_date].split(' to ')[0]
     @booking.end_date = params[:booking][:start_date].split(' to ')[1]
-    @booking.save
+    if @booking.save
+      redirect_to my_profile_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def index
