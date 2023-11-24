@@ -1,5 +1,5 @@
 <%= link_to build, class:"text-decoration-none" do %>
-  <div class="card m-2" style="width: 16rem; height: 300px;">
+  <div class="card m-2 brutal-border-black brutal-box-black " style="width: 16rem; height: 300px;">
     <div class="position-relative">
       <% if !build.photos.first.nil?%>
         <%= cl_image_tag build.photos.first.key, class: "w-100", crop: :fill %>

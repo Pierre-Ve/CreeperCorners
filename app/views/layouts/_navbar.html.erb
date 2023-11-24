@@ -15,7 +15,7 @@
             </div>
               <% if current_user %>
                 <li class="nav-item dropdown">
-                  <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://images.unsplash.com/photo-1559969143-b2defc6419fd?q=80&w=3930&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+                  <img class="avatar dropdown-toggle brutal-border" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://images.unsplash.com/photo-1559969143-b2defc6419fd?q=80&w=3930&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
                   <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <%= link_to "My Profile", my_profile_path, class:"dropdown-item"%>
                     <%= button_to "logout", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
