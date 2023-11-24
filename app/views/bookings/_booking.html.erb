@@ -1,5 +1,6 @@
-<div class="card m-2 p-2">
-  <p><%= booking.start_date %></p>
-  <p><%= booking.build.description %></p>
-  <p><%= booking.build.price %></p>
+<div class="p-2">
+  <p class="fw-bold"><%= booking.build.title %></p>
+  <p><span class="fw-bold">from</span> <%= booking.start_date %> <span class="fw-bold">to</span> <%= booking.end_date %></p>
+
+  <p><span class="fw-bold">Total</span> <%= booking.build.price * (booking.end_date - booking.start_date).to_i %></p>
 </div>
