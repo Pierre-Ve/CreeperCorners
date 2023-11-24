@@ -10,6 +10,6 @@ class PagesController < ApplicationController
     # 2. All my builds available for renting, no restriction
     @my_builds = current_user.builds
     # 3. All booking on my builds (NOTE: date selection to be added )
-    @my_builds_booked = Booking.joins(:build, :user).select("bookings.id, bookings.start_date, bookings.build_id, bookings.status").where(" builds.user_id = ? AND (status = 0 OR status = 1 OR status = 2)", current_user.id)
+    @my_builds_booked = Booking.joins(:build, :user).select("bookings.id, bookings.start_date, bookings.end_date, bookings.build_id, bookings.status").where(" builds.user_id = ? AND (status = 0 OR status = 1 OR status = 2)", current_user.id)
   end
 end
