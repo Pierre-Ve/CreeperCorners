@@ -263,7 +263,7 @@ puts " !!! START creating 10 users in users' database...!!! "
       price: builds_list[index][:price]
     )
     file = URI.open(builds_list[index][:url])
-    build.photos.attach(io: file, filename: "test.png", content_type: "image/jpg")
+c    build.photos.attach(io: file, filename: "test.png", content_type: "image/jpg")
     build.save!
     index += 1
   end

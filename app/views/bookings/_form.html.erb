@@ -5,9 +5,10 @@
               as: :string,
               input_html: { data: { controller: "datepicker",
                             datepicker_booking_dates_value: dates.to_json,
-                            action: "change->bookings#getDates" } } %>
+                            action: "change->bookings#getDates" } },
+                label: "Booking dates"%>
   <div class="d-flex justify-content-between">
-    <p price="<%= build.price %>"data-bookings-target="priceTag"><%= build.price %> x <span data-bookings-target="days">1</span> nuits </p>
+    <p price="<%= build.price %>"data-bookings-target="priceTag"><%= build.price %> x <span data-bookings-target="days">1</span> night(s) </p>
     <i class="fa-solid fa-gem m-1"></i>
   </div>
   <hr style="height: 3px;"/>
